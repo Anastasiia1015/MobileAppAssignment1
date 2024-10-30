@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">My Application 2</string>
+    <string name="get_started">Get Started</string>
+    <string name="header_desc">by creating a free account.</string>
+    <string name="image_desc">Background image</string>
+    <string name="check_box">By checking the box you agree to our</string>
+    <string name="terms">Terms</string>
+    <string name="and">and</string>
+    <string name="conditions">Conditions.</string>
+    <string name="button_next">Next</string>
+    <string name="new_member">New Member?</string>
+    <string name="register_now">Register now</string>
+    <string name="welcome">Welcome back</string>
+    <string name="sign_in">sign in to access your account</string>
+    <string name="enter_email">Enter your email</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forget_password">Forget password ?</string>
+    <string name="full_name">Full name</string>
+    <string name="valid_email">Valid email</string>
+    <string name="phone_number">Phone number</string>
+    <string name="strong_password">Strong Password</string>
+
 </resources>

@@ -51,25 +51,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:text="@string/full_name" />
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:text="@string/valid_email" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/OnBoardingInput"
+            android:layout_marginBottom="15dp"
+            android:hint="@string/full_name"
+            app:endIconDrawable="@drawable/user"
+            app:endIconMode="custom">
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:text="@string/phone_number" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="14sp" />
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:text="@string/strong_password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/OnBoardingInput"
+            android:layout_marginBottom="15dp"
+            android:hint="@string/valid_email"
+            app:endIconDrawable="@drawable/mail"
+            app:endIconMode="custom">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/OnBoardingInput"
+            android:layout_marginBottom="15dp"
+            android:hint="@string/phone_number"
+            app:endIconDrawable="@drawable/smartphone"
+            app:endIconMode="custom">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/OnBoardingInput"
+            android:layout_marginBottom="15dp"
+            android:hint="@string/strong_password"
+            app:endIconDrawable="@drawable/lock"
+            app:endIconMode="custom">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout

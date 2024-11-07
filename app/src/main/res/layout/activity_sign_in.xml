@@ -49,15 +49,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:text="@string/enter_email" />
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:text="@string/password" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/OnBoardingInput"
+            android:layout_marginBottom="15dp"
+            android:hint="@string/enter_email"
+            app:endIconDrawable="@drawable/mail"
+            app:endIconMode="custom">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/OnBoardingInput"
+            android:hint="@string/password"
+            app:endIconDrawable="@drawable/lock"
+            app:endIconMode="custom">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <CheckBox

@@ -20,5 +20,7 @@
     <string name="valid_email">Valid email</string>
     <string name="phone_number">Phone number</string>
     <string name="strong_password">Strong Password</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="login">Login</string>
 
 </resources>

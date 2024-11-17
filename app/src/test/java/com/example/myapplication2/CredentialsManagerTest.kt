@@ -57,4 +57,16 @@ class CredentialsManagerTest {
             true, credentialsManager.isValidPassword("12345678")
         )
     }
+
+    @Test
+    fun givenRightData() {
+        val credentialsManager = CredentialsManager()
+        assertEquals(true, credentialsManager.login("test@et.st", "1234"))
+    }
+
+    @Test
+    fun givenWrongData() {
+        val credentialsManager = CredentialsManager()
+        assertEquals(false, credentialsManager.login("something", "something"))
+    }
 }

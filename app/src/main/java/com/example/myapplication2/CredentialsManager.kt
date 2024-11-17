@@ -13,4 +13,8 @@ class CredentialsManager {
     fun isValidPassword(password: String): Boolean {
         return password.isNotEmpty()
     }
+
+    fun login(email: String, password: String): Boolean {
+        return email == "test@et.st" && password == "1234"
+    }
 }

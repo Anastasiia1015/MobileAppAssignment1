@@ -51,6 +51,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInput"
             style="@style/OnBoardingInput"
             android:layout_marginBottom="15dp"
             android:hint="@string/enter_email"
@@ -65,6 +66,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInput"
             style="@style/OnBoardingInput"
             android:hint="@string/password"
             app:endIconDrawable="@drawable/lock"

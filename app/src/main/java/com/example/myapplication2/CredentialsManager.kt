@@ -2,6 +2,10 @@
 package com.example.myapplication2
 
 class CredentialsManager {
+    private val userAccounts = mutableMapOf<String, String>(
+        Pair<String, String>("test@te.st", "1234")
+    )
+
     fun isEmailValid(email: String): Boolean {
         if (email.isEmpty()) return false
         val emailRegex = Regex(
@@ -15,6 +19,20 @@ class CredentialsManager {
     }
 
     fun login(email: String, password: String): Boolean {
-        return email == "test@et.st" && password == "1234"
+        return userAccounts[email] == password
+    }
+
+    fun register(email: String, password: String): Boolean {
+        if (isEmailValid(email) && isValidPassword((password))) {
+            if (userAccounts.containsKey(email)) {
+                    return false
+            } else {
+                userAccounts[email] = password
+                return true
+            }
+        } else {
+            return false
+        }
+
     }
 }

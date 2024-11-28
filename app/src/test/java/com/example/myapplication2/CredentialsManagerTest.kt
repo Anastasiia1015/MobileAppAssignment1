@@ -69,4 +69,39 @@ class CredentialsManagerTest {
         val credentialsManager = CredentialsManager()
         assertEquals(false, credentialsManager.login("something", "something"))
     }
+
+    @Test
+    fun invalidEmail() {
+        val credentialsManager = CredentialsManager()
+
+        assertEquals(false, credentialsManager.register("invalid_email", "1234")) // Invalid email
+    }
+
+    @Test
+    fun successfulRegistration() {
+        val credentialsManager = CredentialsManager()
+
+        assertEquals(true, credentialsManager.register("example@gmail.com", "1234")) // Successful registration
+    }
+
+    @Test
+    fun duplicateEmail() {
+        val credentialsManager = CredentialsManager()
+
+        assertEquals(false, credentialsManager.register("test@te.st", "new_password")) // Duplicate email
+    }
+
+    @Test
+    fun successfulLogin() {
+        val credentialsManager = CredentialsManager()
+
+        assertEquals(true, credentialsManager.login("test@te.st", "1234")) // Successful login
+    }
+
+    @Test
+    fun incorrectPassword() {
+        val credentialsManager = CredentialsManager()
+
+        assertEquals(false, credentialsManager.login("test@te.st", "wrong_password")) // Incorrect password
+    }
 }

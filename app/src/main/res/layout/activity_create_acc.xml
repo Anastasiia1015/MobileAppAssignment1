@@ -68,6 +68,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/OnBoardingInput"
+            android:id="@+id/emailInput"
             android:layout_marginBottom="15dp"
             android:hint="@string/valid_email"
             app:endIconDrawable="@drawable/mail"
@@ -96,6 +97,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/OnBoardingInput"
+            android:id="@+id/passwordInput"
             android:layout_marginBottom="15dp"
             android:hint="@string/strong_password"
             app:endIconDrawable="@drawable/lock"

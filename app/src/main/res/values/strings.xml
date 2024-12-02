@@ -23,5 +23,4 @@
     <string name="have_account">Already have an account?</string>
     <string name="login">Login</string>
     <string name="error_invalid_data">You entered wrong credentials</string>
-
 </resources>

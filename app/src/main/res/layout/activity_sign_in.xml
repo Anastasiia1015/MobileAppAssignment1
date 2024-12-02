@@ -40,9 +40,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeLabel" />
 
-
-
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailInput"
             style="@style/OnBoardingInput"
@@ -55,7 +52,6 @@
             app:layout_constraintTop_toBottomOf="@+id/onboardImage"
             android:layout_marginTop="32dp"
             >
-
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -141,5 +137,21 @@
             android:textSize="13sp"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@+id/nextButton"
+        app:layout_constraintTop_toBottomOf="@+id/nextButton" >
+
+        <Button
+            android:id="@+id/switchFragmentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Switch Fragment" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

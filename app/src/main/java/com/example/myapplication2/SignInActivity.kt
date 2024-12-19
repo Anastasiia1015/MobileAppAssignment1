@@ -28,13 +28,6 @@ class SignInActivity : AppCompatActivity() {
             insets
         }
 
-        // Add FragmentA initially
-        if (savedInstanceState == null) {
-            supportFragmentManager.commit {
-                replace(R.id.fragmentContainer, FragmentA())
-            }
-        }
-
         val registerNowLabel = findViewById<View>(R.id.register)
         registerNowLabel.setOnClickListener {
             val intent = Intent(this, CreateAccActivity::class.java)
@@ -57,23 +50,5 @@ class SignInActivity : AppCompatActivity() {
                 emailInput.error = getString(R.string.error_invalid_data)
             }
         }
-
-        // Fragment toggle button logic
-        val toggleFragmentButton = findViewById<Button>(R.id.switchFragmentButton)
-        toggleFragmentButton.setOnClickListener {
-            toggleFragment()
-        }
-    }
-
-    private fun toggleFragment() {
-        val fragment: Fragment = if (isFragmentA) {
-            FragmentB()
-        } else {
-            FragmentA()
-        }
-        supportFragmentManager.commit {
-            replace(R.id.fragmentContainer, fragment)
-        }
-        isFragmentA = !isFragmentA // Toggle the flag
     }
 }

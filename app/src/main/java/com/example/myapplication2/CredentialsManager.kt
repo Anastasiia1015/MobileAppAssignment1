@@ -1,10 +1,14 @@
-// Put your package name here. Check your activity for reference.
 package com.example.myapplication2
 
 class CredentialsManager {
     private val userAccounts = mutableMapOf<String, String>(
-        Pair<String, String>("test@te.st", "1234")
+        "test@te.st" to "1234"
     )
+
+    fun checkIfEmailExists(email: String): Boolean {
+        val normalizedEmail = email.lowercase().trim()
+        return userAccounts.containsKey(normalizedEmail)
+    }
 
     fun isEmailValid(email: String): Boolean {
         if (email.isEmpty()) return false
@@ -19,20 +23,15 @@ class CredentialsManager {
     }
 
     fun login(email: String, password: String): Boolean {
-        return userAccounts[email] == password
+        val normalizedEmail = email.lowercase().trim()
+        return userAccounts[normalizedEmail] == password
     }
 
-    fun register(email: String, password: String): Boolean {
-        if (isEmailValid(email) && isValidPassword((password))) {
-            if (userAccounts.containsKey(email)) {
-                    return false
-            } else {
-                userAccounts[email] = password
-                return true
-            }
-        } else {
-            return false
+    fun register(fullName: String, email: String, phoneNumber: String, password: String): Boolean {
+        if (isEmailValid(email) && isValidPassword(password)) {
+            userAccounts[email.lowercase()] = password
+            return true
         }
-
+        return false
     }
 }

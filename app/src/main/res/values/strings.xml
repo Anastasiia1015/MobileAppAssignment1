@@ -3,10 +3,7 @@
     <string name="get_started">Get Started</string>
     <string name="header_desc">by creating a free account.</string>
     <string name="image_desc">Background image</string>
-    <string name="check_box">By checking the box you agree to our</string>
-    <string name="terms">Terms</string>
-    <string name="and">and</string>
-    <string name="conditions">Conditions.</string>
+    <string name="check_box">By checking the box you agree to our Terms and Conditions</string>
     <string name="button_next">Next</string>
     <string name="new_member">New Member?</string>
     <string name="register_now">Register now</string>
@@ -23,5 +20,11 @@
     <string name="have_account">Already have an account?</string>
     <string name="login">Login</string>
     <string name="error_invalid_data">You entered wrong credentials</string>
-    <string name="title_activity_fragments_sample">FragmentSampleActivity</string>
+    <string name="title_activity_fragment_auth">FragmentAuthActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_exists_error">Email exists</string>
+    <string name="wrong_password_error">Wrong password</string>
+    <string name="meal_image">An image of a meal</string>
+    <string name="heart_shaped_icon">heart shaped icon</string>
+    <string name="sharing_icon">sharing icon</string>
 </resources>

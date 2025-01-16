@@ -7,7 +7,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecipeAdapter(private val recipes: List<Recipe>, private val eventHandler: EventHandler) :
+class RecipeAdapter(private var recipes: List<Recipe>, private val eventHandler: EventHandler) :
     RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
 
     interface EventHandler {
@@ -40,5 +40,10 @@ class RecipeAdapter(private val recipes: List<Recipe>, private val eventHandler:
         holder.itemView.setOnClickListener { eventHandler.onRecipeClicked(recipes[position]) }
         holder.shareButton.setOnClickListener { eventHandler.onShareClicked(recipes[position]) }
         holder.likeButton.setOnClickListener { eventHandler.onLikeClicked(recipes[position]) }
+    }
+
+    fun updateRecipes(newRecipes: List<Recipe>) {
+        recipes = newRecipes
+        notifyDataSetChanged()
     }
 }

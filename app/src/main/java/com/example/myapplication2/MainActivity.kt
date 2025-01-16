@@ -3,13 +3,22 @@ package com.example.myapplication2
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), RecipeAdapter.EventHandler {
+
+    private val viewModel: RecipesViewModel by viewModels()
+    private lateinit var recipeAdapter: RecipeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +27,27 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.EventHandler {
 
         setupEdgeToEdgeInsets()
         setupRecyclerView()
+
+        val searchView = findViewById<SearchView>(R.id.searchView)
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                viewModel.searchRecipes(newText)
+                return true
+            }
+        })
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.recipes.collect { recipes ->
+                    recipeAdapter.updateRecipes(recipes)
+                }
+            }
+        }
     }
 
     private fun setupEdgeToEdgeInsets() {
@@ -30,19 +60,9 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.EventHandler {
 
     private fun setupRecyclerView() {
         val recipeList = findViewById<RecyclerView>(R.id.recipes_list)
-        val recipes = getRecipes()
-        recipeList.adapter = RecipeAdapter(recipes, this)
+        recipeAdapter = RecipeAdapter(emptyList(), this) // Initially empty list
+        recipeList.adapter = recipeAdapter
         recipeList.layoutManager = LinearLayoutManager(this)
-    }
-
-    private fun getRecipes(): List<Recipe> {
-        return listOf(
-            Recipe(1, "Pizza", "Description of Pizza"),
-            Recipe(2, "Burger", "Description of Burger"),
-            Recipe(3, "Pasta", "Description of Pasta"),
-            Recipe(4, "Noodles", "Description of Noodles"),
-            Recipe(5, "Kebab", "Description of Kebab")
-        )
     }
 
     override fun onRecipeClicked(recipe: Recipe) {

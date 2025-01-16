@@ -7,40 +7,70 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
-class LoginFragment(val credentialsManager: CredentialsManager) : Fragment() {
+
+class LoginFragment(private val credentialsManager: CredentialsManager) : Fragment() {
+
     private var listener: EventsInterface? = null
+
     interface EventsInterface {
         fun onLoginPressed()
         fun onSwitchToRegisterPressed()
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        require(context is EventsInterface, {
-            "Activity holding fragment must implement its EventsInterface"
-        })
+        if (context !is EventsInterface) {
+            throw IllegalArgumentException("Activity must implement EventsInterface")
+        }
         listener = context
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<View>(R.id.buttonNext).setOnClickListener {
-            val emailInput = view.findViewById<TextInputLayout>(R.id.emailTextInputLayout)
-            val passwordInput = view.findViewById<TextInputLayout>(R.id.passwordTextInputLayout)
-            val emailText = emailInput.editText?.text.toString()
-            val passwordText = passwordInput.editText?.text.toString()
-            if (credentialsManager.login(emailText, passwordText)) {
-                listener?.onLoginPressed()
-            } else {
-                emailInput.error = getString(R.string.email_exists_error)
-            }
+        setupViews(view)
+    }
+
+    private fun setupViews(view: View) {
+        val loginButton = view.findViewById<View>(R.id.loginButton)
+        val registerSwitchButton = view.findViewById<View>(R.id.registerSwitchButton)
+
+        loginButton.setOnClickListener { handleLogin(view) }
+        registerSwitchButton.setOnClickListener { listener?.onSwitchToRegisterPressed() }
+    }
+
+    private fun handleLogin(view: View) {
+        val emailInput = view.findViewById<TextInputLayout>(R.id.emailTextInputLayout)
+        val passwordInput = view.findViewById<TextInputLayout>(R.id.passwordTextInputLayout)
+
+        val emailText = emailInput.editText?.text.toString()
+        val passwordText = passwordInput.editText?.text.toString()
+
+        if (isValidLogin(emailText, passwordText, emailInput)) {
+            listener?.onLoginPressed()
         }
-        view.findViewById<View>(R.id.newMember).setOnClickListener {
-            listener?.onSwitchToRegisterPressed()
+    }
+
+    private fun isValidLogin(
+        email: String,
+        password: String,
+        emailInput: TextInputLayout
+    ): Boolean {
+        return if (credentialsManager.login(email, password)) {
+            clearErrors(emailInput)
+            true
+        } else {
+            emailInput.error = getString(R.string.invalid_credentials_error)
+            false
         }
+    }
+
+    private fun clearErrors(vararg inputLayouts: TextInputLayout) {
+        inputLayouts.forEach { it.error = null }
     }
 }

@@ -24,6 +24,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email_exists_error">Email exists</string>
     <string name="wrong_password_error">Wrong password</string>
+    <string name="invalid_credentials_error">Email does not exist</string>
     <string name="meal_image">An image of a meal</string>
     <string name="heart_shaped_icon">heart shaped icon</string>
     <string name="sharing_icon">sharing icon</string>

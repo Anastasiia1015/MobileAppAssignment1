@@ -29,8 +29,10 @@ class FragmentAuthActivity :
         }
     }
     override fun onLoginPressed() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, RecipesFragment())
+            .addToBackStack(null)
+            .commit()
     }
     override fun onRegisterPressed() {
         supportFragmentManager.commit {

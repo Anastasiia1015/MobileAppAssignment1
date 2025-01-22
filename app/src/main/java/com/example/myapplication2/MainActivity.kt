@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), RecipeAdapter.EventHandler {
-
     private val viewModel: RecipesViewModel by viewModels()
     private lateinit var recipeAdapter: RecipeAdapter
 
